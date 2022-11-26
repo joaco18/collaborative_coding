@@ -1,0 +1,14 @@
+gdown == 4.5.1
+unzip == 1.0.0
+numpy == 1.21.3
+opencv-python == 4.6.0.66
+opencv-contrib-python == 4.6.0.66
+pandas == 1.5.0
+scikit-learn == 1.1.2
+matplotlib == 3.6.0
+SimpleITK == 2.2.0
+scikit-image == 0.19.3
+seaborn == 0.12.0
+tqdm == 4.64.1
+itk-elastix == 0.14.2
+PyYAML == 6.0

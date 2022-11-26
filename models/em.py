@@ -6,10 +6,30 @@ import seaborn as sns
 from sklearn.cluster import KMeans
 from tqdm import tqdm
 from typing import Union
-
-from models_utils import gaussian_likelihood
+from scipy.stats import multivariate_normal
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
+
+
+def gaussian_likelihood(
+    x: np.ndarray, means: np.ndarray, sigmas: np.ndarray,
+) -> np.ndarray:
+    """
+    Computes the likelihood of each of the datapoints for each of the classes, assuming a
+    Gaussian distribution for each of them, with mean and convariance matrix/covariance
+    given by 'means' and 'sigmas'.
+    Args:
+        x (np.ndarray): Datapoints 2D array, rows=samples, columns=features
+        means (np.ndarray): Means 2D array, rows=components, columns=features
+        sigmas (np.ndarray): Covariance/variance 3D array, dim 0: components,
+            dim 1 and 2: n_features x n_features
+    Returns:
+        (np.ndarray): 2D Gaussian probabilities array, rows=sample, columns=components
+    """
+    n_components, _ = means.shape
+    likelihood = [multivariate_normal.pdf(
+        x, means[i, :], sigmas[i, :, :], allow_singular=True) for i in range(n_components)]
+    return np.asarray(likelihood).T
 
 
 class ExpectationMaximization():
@@ -34,8 +54,8 @@ class ExpectationMaximization():
             n_components (int, optional): Number of components to be used.
                 Defaults to 3.
             mean_init (Union[str, np.ndarray], optional): How to initialize the means.
-                You can either pass an array or use one of ['random', 'kmeans',
-                'mean_shifts']. Defaults to 'random'.
+                You can either pass an array or use one of ['random', 'kmeans'].
+                Defaults to 'random'. TODO: Update
             max_iter (int, optional): Maximum number of iterations for the algorith to
                 run. Defaults to 100.
             change_tol (float, optional): Minimum change in the summed log-likelihood
@@ -51,7 +71,8 @@ class ExpectationMaximization():
                 algorithm. Dimesions should be [n_components, n_hist_bins]
                 If not used, None should be passed. Defaults to None
             atlas_use (str, optional): How to use the probability maps, either at the end
-                ('after') or in each iteration ('into'). Defaults to None
+                ('after') or in each iteration ('into'). Defaults to None which means atlas
+                are not used in the EM iterative process.
             atlas_map (np.ndarray, optional): Atlas volumes, it should have dimesions
                 [n_components, [volume dimensions]]. The atlas map for each component can be
                 either binary or a probability one. Defaults to None, which means not using
@@ -81,10 +102,8 @@ class ExpectationMaximization():
         self.training = False
 
         # Check kind of means to be used
-        mean_options = ['random', 'kmeans', 'tissue_models', 'label_prop']
-        condition_one = isinstance(mean_init, str) and (mean_init not in mean_options)
-        condition_two = isinstance(priors, np.ndarray) and (priors.size != n_components)
-        if condition_one or condition_two:
+        mean_options = ['random', 'kmeans', 'tissue_models', 'mni_atlas', 'mv_atlas']
+        if isinstance(mean_init, str) and (mean_init not in mean_options):
             raise Exception(
                 "Initial means must be either 'random', 'kmeans', 'tisssue_models', "
                 "'label_prop' or an array of 'n_components' rows, and n_features number of columns"
@@ -123,8 +142,11 @@ class ExpectationMaximization():
                     tissue_prob_maps[:, c] = self.tissue_models[c, :][self.x[:, 0]]
                 self.posteriors = tissue_prob_maps
                 self.posteriors[np.arange(self.n_samples), np.argmax(tissue_prob_maps, axis=1)] = 1
+            elif self.mean_init == 'mni_atlas':
+                self.mean_type = 'Label Propagation MNI Atlas'
+                self.posteriors = self.atlas_map
             else:
-                self.mean_type = 'Label Propagation'
+                self.mean_type = 'Label Propagation Medvision Atlas'
                 self.posteriors = self.atlas_map
         else:
             self.means = self.mean_init
@@ -303,6 +325,7 @@ class ExpectationMaximization():
         Args:
             it (int): Iteration number.
         """
+        # plt.ioff()
         if (it % self.plot_rate) == 0:
             predictions = np.argmax(self.posteriors, 1)
             if self.n_feat == 1:
@@ -312,7 +335,8 @@ class ExpectationMaximization():
                     stat='probability', ax=ax)
                 plt.xlabel('Intensities')
                 plt.title(f'Labels assignment at iteration {it}')
-                plt.show()
+                plt.show(block=False)
+                plt.pause(0.01)
             else:
                 plt.figure()
                 if it == 0:
@@ -326,10 +350,12 @@ class ExpectationMaximization():
                 plt.xlabel('T1 intensities')
                 plt.title(f'Labels assignment at iteration {it}')
                 sns.despine()
-                plt.show()
+                plt.show(block=False)
+                plt.pause(0.01)
                 if it == 0:
                     plt.figure()
                     indx = np.random.choice(np.arange(self.x.shape[0]), 1000, False)
                     sample = self.x[indx, :]
                     sns.kdeplot(x=sample[:, 0], y=sample[:, 1])
-                    plt.show()
+                    plt.show(block=False)
+                    plt.pause(0.01)
