@@ -1,0 +1,62 @@
+# All EM model settings:
+model:
+  # how to initialize the means and covariance matrix:
+  # options: 'random', 'kmeans', 'tissue_models', 'mni_atlas', 'mv_atlas'
+  initialization: 'tissue_models'
+  # stopping criterias
+  n_iterations: 100
+  tolerance: 0.000001
+  # number of clusters to model in the EM
+  n_components: 3
+  # whether to print intermediate messages in EM
+  verbose: false
+  # if you want to use the atlas inside EM:
+  # options: 'into', 'after', 'null'
+  # null means not to use of atlas inside EM
+  use_atlas_in_em: 'after'
+  # select the atlas to use: 'mni', 'mv'
+  which_atlas_in_em: 'mni'
+  # you can see how the iterative cluster goes at certain iterations rate
+  # null means no plots are draw
+  plot_rate: null  
+
+
+# All dataset settings are gathered here:
+data:
+  # path to the 'data' folder in your machine
+  datapath: '/home/jseia/Desktop/MAIA/classes/spain/ehealth/lab/collaborative_coding/data'
+  # path to the tissue models file in your machine
+  tissue_models_filepath: '/home/jseia/Desktop/MAIA/classes/spain/ehealth/lab/collaborative_coding/data/tissue_models/tissue_models_3C.pkl'
+  # Filter the images according to modality and pathology (only T1 and normal are included in the dataset)
+  modalities: ['T1']
+  pathologies: ['normal']
+  # select a subset of the cases manually or run them all
+  case_selection: ['1013'] # 'all'
+  # how to normalize the images, only min-max methods is supported but you can change the details
+  normalization_cfg:
+    type: 'min_max'
+    max_val: 255
+    mask: null
+    percentiles: [1, 99]
+    dtype: 'uint8'
+  # how to resize the images, this is currently mocked inside the code, so this config doesn't have impact
+  resize_cfg:
+    size: [1, 1, 1]
+    interpolation: 'bicubic'
+  # whether to skull strip the image, this is currently mocked inside the code, so this config doesn't have impact
+  skull_stripping: true
+
+
+
+# All the results saving configs are gathered here:
+results:
+  # where to save the results
+  results_path: '/home/jseia/Desktop/MAIA/classes/spain/ehealth/lab/collaborative_coding/experiments/train_results'
+  # if you are going to run several experiments with the same name and want to avoid overwriting, write true here
+  use_time_in_log: false
+  # name of the experiment
+  experiment_name: 'try_01'
+  # whether you want to store de nii files with the segmentations
+  save_segmentations: true
+  # appart from the json file, store a csv file for faster plots an analysis later
+  save_results_csv: true
