@@ -148,7 +148,8 @@ def main():
     # Store the configuration info
     # For readability
     with open(results_path / 'test_config.yaml', "w") as ymlfile:
-        cfg = yaml.safe_dump(ymlfile)
+        yaml.safe_dump(cfg, ymlfile)
+
     # For fast pipeline configuration
     with open(str(results_path / 'checkpoint.pkl'), 'wb') as pkl_file:
         update = {'cfg': cfg, 'tissue_models': train_dataset.tissue_models}
