@@ -52,6 +52,7 @@ def main():
         df.columns = [
             'experiment_name', 'algorithm', 'initialization', 'n_iters', 'time', 'tissue', 'dice'
         ]
+        # plot dice figure
         # HERE GROUP 5, FIX THIS CODE
         [FUNCTION_1](df)
         plt.savefig(savepath/'dices.svg', bbox_inches='tight', format='svg')
