@@ -10,6 +10,7 @@ def dice_score(gt: np.ndarray, pred: np.ndarray):
     Returns:
         list: Dice scores per tissue [CSF, GM, WM]
     """
+    gt[gt == 66] == 0
     classes = np.unique(gt[gt != 0]).astype(int)
     dice = np.zeros((len(classes)))
     for i in classes:
