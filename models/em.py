@@ -132,8 +132,8 @@ class ExpectationMaximization():
                 self.priors = np.ones((self.n_components, 1)) / self.n_components
             elif self.mean_init == 'kmeans':
                 self.mean_type = 'K-Means'
-                kmeans = KMeans(
-                    n_clusters=self.n_components, random_state=self.seed).fit(self.x)
+                ## HERE GROUP 1, FIX THIS CODE
+                kmeans = KMeans(...).fit(self.x)
                 self.posteriors[np.arange(self.n_samples), kmeans.labels_] = 1
             elif self.mean_init == 'tissue_models':
                 self.mean_type = 'Tissue Models'
@@ -144,7 +144,8 @@ class ExpectationMaximization():
                 self.posteriors[np.arange(self.n_samples), np.argmax(tissue_prob_maps, axis=1)] = 1
             elif self.mean_init == 'mni_atlas':
                 self.mean_type = 'Label Propagation MNI Atlas'
-                self.posteriors = self.atlas_map
+                ## HERE GROUP 4, FIX THIS CODE
+                (...)
             else:
                 self.mean_type = 'Label Propagation Medvision Atlas'
                 self.posteriors = self.atlas_map
@@ -267,12 +268,14 @@ class ExpectationMaximization():
         if (self.atlas_use == 'into' and self.training):
             if (it == 0) and (self.mean_init == 'kmeans'):
                 self.match_labels()
-            self.posteriors = self.posteriors * self.atlas_map
+            # HERE GROUP 2, FIX THIS CODE:
+            self.posteriors = (...)
 
         if (self.atlas_use == 'after' and not(self.training)):
             if self.mean_init == 'kmeans':
                 self.match_labels()
-            self.posteriors = self.posteriors * self.atlas_map
+            # HERE GROUP 3, FIX THIS CODE:
+            self.posteriors = (...)
 
     def match_labels(self):
         labels_em = np.argmax(self.posteriors, axis=1)
