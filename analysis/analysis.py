@@ -52,11 +52,13 @@ def main():
         df.columns = [
             'experiment_name', 'algorithm', 'initialization', 'n_iters', 'time', 'tissue', 'dice'
         ]
-        plots.plot_dice(df)
+        # HERE GROUP 5, FIX THIS CODE
+        [FUNCTION_1](df)
         plt.savefig(savepath/'dices.svg', bbox_inches='tight', format='svg')
 
         # plot brain segementations figure
-        plots.brains_figure(cases, data_path, segs_path, exp_names, savepath)
+        # HERE GROUP 5, FIX THIS CODE
+        [FUNCTION_2](cases, data_path, segs_path, exp_names, savepath)
         plt.show()
 
 
