@@ -93,11 +93,7 @@ Detailed desc
 
     > Windows:
     ```bash
-    mkdir data && cd data/ && gdown https://drive.google.com/uc?id=1MlypAmSqJIcYi7HRewPFeutDUL3nx2Fx && cd ../
-    ```
-    &emsp; Unzip the file manually and then
-    ```bash
-    rm data/example_image.zip && 
+    mkdir -p data && cd data/ && gdown https://drive.google.com/uc?id=1MlypAmSqJIcYi7HRewPFeutDUL3nx2Fx && tar -xf example_img.zip && del example_image.zip && cd ../
     ```
 
     > Alternative:
@@ -120,9 +116,8 @@ Detailed desc
 
     > Windows:
     ```bash
-    cd models/ && gdown https://drive.google.com/uc?id=1bNROHoZSQgwaqF-w0NwWyFHyv3H1tXWx && cd ../
+    cd models/ && gdown https://drive.google.com/uc?id=1bNROHoZSQgwaqF-w0NwWyFHyv3H1tXWx && tar -xf checkpoints.zip && del checkpoints.zip && cd ../
     ```
-    &emsp; Unzip the file manually and then delete the zip file.
 
     > Alternative:
     
@@ -133,7 +128,7 @@ Detailed desc
 - 4.2.3 **Run the pipeline**
 
     ```bash
-    python brain_segmenter.py -ip [PATH] --chkpt [PATH] -op [PATH]
+    python brain_segmenter.py --ip [PATH] --chkpt [PATH] --op [PATH]
     ```
 
     Example:
@@ -156,9 +151,8 @@ Detailed desc
     ```
     > Windows:
     ```bash
-    mkdir data && cd data/ && gdown https://drive.google.com/uc?id=1-o0pSnkKytqoqaqsW472Ze1wj4ccjD3y && cd ../
+    mkdir -p data && cd data/ && gdown https://drive.google.com/uc?id=1-o0pSnkKytqoqaqsW472Ze1wj4ccjD3y && tar -xf data.zip && del data.zip && cd ../
     ```
-    &emsp; Unzip the file manually and then remove the zip file.
 
     > Alternative:
 
