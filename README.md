@@ -34,6 +34,7 @@
 Checkploint file | Model  | CSF | WM | GM 
 ---------------- | -----  | --- | -- |--- 
 checkpoint_group1.pkl | EM - init:KM - atlas:null/null | 0.17 | 0.822  | 0.823
+checkpoint_group2.pkl | EM - init:TM - atlas:mv/into | 0.255 | 0.89  | 0.933
 
 ## 3. Detailed pipeline description
 
