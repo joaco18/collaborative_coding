@@ -93,7 +93,7 @@ Detailed desc
 
     > Windows:
     ```bash
-    mkdir -p data && cd data/ && gdown https://drive.google.com/uc?id=1MlypAmSqJIcYi7HRewPFeutDUL3nx2Fx && tar -xf example_img.zip && del example_image.zip && cd ..
+    mkdir data && cd data/ && gdown https://drive.google.com/uc?id=1MlypAmSqJIcYi7HRewPFeutDUL3nx2Fx && tar -xf example_img.zip && del example_image.zip && cd ..
     ```
 
     > Alternative:
@@ -151,7 +151,7 @@ Detailed desc
     ```
     > Windows:
     ```bash
-    mkdir -p data && cd data/ && gdown https://drive.google.com/uc?id=1-o0pSnkKytqoqaqsW472Ze1wj4ccjD3y && tar -xf data.zip && del data.zip && cd ..
+    mkdir data && cd data/ && gdown https://drive.google.com/uc?id=1-o0pSnkKytqoqaqsW472Ze1wj4ccjD3y && tar -xf data.zip && del data.zip && cd ..
     ```
 
     > Alternative:
