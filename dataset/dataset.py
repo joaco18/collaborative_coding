@@ -57,8 +57,10 @@ class MedvisionDataset():
         self.df = pd.read_csv(datapath/'medvision_dataset.csv', index_col=0)
 
         # Load tissue models
-        with open((self.tissue_models_filepath), 'rb') as f:
-            self.tissue_models = pickle.load(f)
+        self.tissue_models = None
+        if self.tissue_models_filepath is not None:
+            with open((self.tissue_models_filepath), 'rb') as f:
+                self.tissue_models = pickle.load(f)
 
         # Filter the desired cases
         self.filter_by_modality()
