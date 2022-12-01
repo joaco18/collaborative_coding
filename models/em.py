@@ -276,7 +276,7 @@ class ExpectationMaximization():
             if self.mean_init == 'kmeans':
                 self.match_labels()
             # HERE GROUP 3, FIX THIS CODE:
-            self.posteriors = (...)
+            self.posteriors = self.posteriors * self.atlas_map
 
     def match_labels(self):
         labels_em = np.argmax(self.posteriors, axis=1)
