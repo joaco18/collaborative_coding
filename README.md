@@ -33,7 +33,7 @@
 ## 2. Benchmarks:
 Checkploint file | Model  | CSF | WM | GM 
 ---------------- | -----  | --- | -- |--- 
-checkpoint_def.pkl | EM - init:TM - atlas:mni/after | 0.463 | 0.805  | 0.895
+checkpoint_group5.pkl | EM - init:Rn - atlas:null/null | 0.014 | 0.411 | 0.196
 
 ## 3. Detailed pipeline description
 
