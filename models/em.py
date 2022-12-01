@@ -133,7 +133,8 @@ class ExpectationMaximization():
             elif self.mean_init == 'kmeans':
                 self.mean_type = 'K-Means'
                 ## HERE GROUP 1, FIX THIS CODE
-                kmeans = KMeans(...).fit(self.x)
+                kmeans = KMeans(
+                    n_clusters=self.n_components, random_state=self.seed).fit(self.x)
                 self.posteriors[np.arange(self.n_samples), kmeans.labels_] = 1
             elif self.mean_init == 'tissue_models':
                 self.mean_type = 'Tissue Models'
@@ -269,13 +270,13 @@ class ExpectationMaximization():
             if (it == 0) and (self.mean_init == 'kmeans'):
                 self.match_labels()
             # HERE GROUP 2, FIX THIS CODE:
-            self.posteriors = (...)
+            self.posteriors = self.posteriors * self.atlas_map
 
         if (self.atlas_use == 'after' and not(self.training)):
             if self.mean_init == 'kmeans':
                 self.match_labels()
             # HERE GROUP 3, FIX THIS CODE:
-            self.posteriors = (...)
+            self.posteriors = self.posteriors * self.atlas_map
 
     def match_labels(self):
         labels_em = np.argmax(self.posteriors, axis=1)

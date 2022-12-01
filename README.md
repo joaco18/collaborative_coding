@@ -33,7 +33,10 @@
 ## 2. Benchmarks:
 Checkploint file | Model  | CSF | WM | GM 
 ---------------- | -----  | --- | -- |--- 
-checkpoint_groupN.pkl | EM - init:KM - atlas:mv/into | 0.154 | 0.834  | 0.88
+checkpoint_group1.pkl | EM - init:KM - atlas:null/null | 0.17 | 0.822  | 0.823
+checkpoint_group2.pkl | EM - init:TM - atlas:mv/into | 0.255 | 0.89  | 0.933
+checkpoint_group3.pkl | EM - init:KM - atlas:mv/into | 0.709 | 0.858  | 0.928
+checkpoint_group4.pkl | EM - init:KM - atlas:mv/into | 0.154 | 0.834  | 0.88
 
 ## 3. Detailed pipeline description
 
