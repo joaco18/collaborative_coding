@@ -54,7 +54,7 @@ class MedvisionDataset():
         self.case_selection = case_selection
 
         # Load the dataset csv
-        self.df = pd.read_csv(datapath/'medvision_dataset.csv', index_col=0)
+        self.df = pd.read_csv(self.datapath/'medvision_dataset.csv', index_col=0)
 
         # Load tissue models
         self.tissue_models = None
