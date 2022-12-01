@@ -114,7 +114,7 @@ git checkout -b groupN
     ```
     > Alternative
 
-    &emsp; Copy the file _test_config.yaml.example_ in the same directory where it is and when pasting rename it as _/test_config.yaml_
+    &emsp; Copy the file _test_config.yaml.example_ in the same directory where it is and when pasting rename it as _test_config.yaml_
 
 &emsp; Before running any experiment, check the content of the configuration file [experiments/test_config.yaml](../experiments/test_config.yaml):
 
