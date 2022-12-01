@@ -8,6 +8,7 @@ experiments/train_results/
 dataset/generate_*
 models/checkpoints
 .vscode/
+.idea*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
