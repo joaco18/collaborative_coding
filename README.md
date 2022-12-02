@@ -115,7 +115,7 @@ Detailed desc
 
     > Windows:
     ```bash
-    cd models/ && gdown https://drive.google.com/uc?id=1bNROHoZSQgwaqF-w0NwWyFHyv3H1tXWx && tar -xf checkpoints.zip && del checkpoints.zip && cd ..
+    cd models\ && gdown https://drive.google.com/uc?id=1bNROHoZSQgwaqF-w0NwWyFHyv3H1tXWx && tar -xf checkpoints.zip && del checkpoints.zip && cd ..
     ```
 
     > Alternative:
@@ -141,7 +141,6 @@ Detailed desc
 
     > Unix:
     ```bash
-    mkdir -p data &&
     cd data/ &&
     gdown https://drive.google.com/uc?id=1-o0pSnkKytqoqaqsW472Ze1wj4ccjD3y &&
     unzip data.zip &&
@@ -150,7 +149,7 @@ Detailed desc
     ```
     > Windows:
     ```bash
-    mkdir data && cd data/ && gdown https://drive.google.com/uc?id=1-o0pSnkKytqoqaqsW472Ze1wj4ccjD3y && tar -xf data.zip && del data.zip && cd ..
+    cd data/ && gdown https://drive.google.com/uc?id=1-o0pSnkKytqoqaqsW472Ze1wj4ccjD3y && tar -xf data.zip && del data.zip && cd ..
     ```
 
     > Alternative:
