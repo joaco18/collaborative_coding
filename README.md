@@ -83,7 +83,6 @@ Detailed desc
 -  4.2.1 **Download the example image**
     > Unix:
     ```bash
-    mkdir -p data &&
     cd data/ &&
     gdown https://drive.google.com/uc?id=1MlypAmSqJIcYi7HRewPFeutDUL3nx2Fx &&
     unzip example_image.zip &&
@@ -93,7 +92,7 @@ Detailed desc
 
     > Windows:
     ```bash
-    mkdirs data && cd data/ && gdown https://drive.google.com/uc?id=1MlypAmSqJIcYi7HRewPFeutDUL3nx2Fx && tar -xf example_img.zip && del example_image.zip && cd ..
+    cd data/ && gdown https://drive.google.com/uc?id=1MlypAmSqJIcYi7HRewPFeutDUL3nx2Fx && tar -xf example_image.zip && del example_image.zip && cd ..
     ```
 
     > Alternative:
