@@ -93,7 +93,7 @@ Detailed desc
 
     > Windows:
     ```bash
-    mkdirs data && cd data/ && gdown https://drive.google.com/uc?id=1MlypAmSqJIcYi7HRewPFeutDUL3nx2Fx && tar -xf example_img.zip && del example_image.zip && cd ..
+    mkdirs data && cd data/ && gdown https://drive.google.com/uc?id=1MlypAmSqJIcYi7HRewPFeutDUL3nx2Fx && tar -xf example_image.zip && del example_image.zip && cd ..
     ```
 
     > Alternative:
