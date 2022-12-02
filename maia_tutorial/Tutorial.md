@@ -110,7 +110,7 @@ git checkout -b groupN
     ```
     > Windows
     ```bash
-    copy experiments/test_config.yaml.example experiments/test_config.yaml
+    copy experiments\test_config.yaml.example experiments\test_config.yaml
     ```
     > Alternative
 
@@ -127,26 +127,26 @@ git checkout -b groupN
 
 &emsp; Now that we have some idea of how the config file works, lets run the experiment.
 
-- Modify the file [experiments/test_config.yaml.example](../experiments/test_config.yaml.example) according to the experiment assigned to your group:
+- Modify the file [experiments/test_config.yaml](../experiments/test_config.yaml.example) according to the experiment assigned to your group:
     -  Group 1:
         
-        Run an experiment using Kmeans as initialization for EM. Don't use the atlas in any way. Use the cases: ['1025', '1024', '1104', '1110', '1003']. Modify the experiment name to exp_group1.
+        Run an experiment using Kmeans as initialization for EM. Don't use the atlas in any way. Use the cases: ['1025', '1024', '1104', '1110', '1003']. Modify the experiment name to exp_group1. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
     
     -  Group 2:
         
-        Run an experiment using tissue models as initialization for EM. Use the Medvision atlas in INTO mode. Use the cases: ['1025', '1024', '1104', '1110', '1003']. Modify the experiment name to exp_group2.
+        Run an experiment using tissue models as initialization for EM. Use the Medvision atlas in INTO mode. Use the cases: ['1025', '1024', '1104', '1110', '1003']. Modify the experiment name to exp_group2. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
 
     -  Group 3:
         
-        Run an experiment using tissue models as initialization for EM. Use the Medvision atlas in AFTER mode. Use the cases: ['1025', '1024', '1104', '1110', '1003']. Modify the experiment name to exp_group3.
+        Run an experiment using tissue models as initialization for EM. Use the Medvision atlas in AFTER mode. Use the cases: ['1025', '1024', '1104', '1110', '1003']. Modify the experiment name to exp_group3. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
 
     -  Group 4:
         
-        Run an experiment using medvision atlas as initialization for EM. Don't use the atlas inside EM. Use the cases: ['1025', '1024', '1104', '1110', '1003']. Modify the experiment name to exp_group4.
+        Run an experiment using medvision atlas as initialization for EM. Don't use the atlas inside EM. Use the cases: ['1025', '1024', '1104', '1110', '1003']. Modify the experiment name to exp_group4. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
     
     -  Group 5:
         
-        Run an experiment using random initialization for EM. Don't use the atlas inside EM. Use the cases: ['1025', '1024', '1104', '1110', '1003']. Modify the experiment name to exp_group5.
+        Run an experiment using random initialization for EM. Don't use the atlas inside EM. Use the cases: ['1025', '1024', '1104', '1110', '1003']. Modify the experiment name to exp_group5. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
     
 - Run the experiment:
     > Any OS
@@ -177,7 +177,7 @@ git checkout -b groupN
     git add models/em.py
     ```
     ```git
-    git commit -m 'Fixed problems in Kmenas initialization'
+    git commit -m "Fixed problems in Kmenas initialization"
     ```
 
 - Once you have all your files commited, make sure you include the latest changes in dev (and potentially solve any conflict) are included in your branch before doing any pull request:
