@@ -4,6 +4,9 @@ import numpy as np
 def reconstruct_volume_from_tabular(
     preds_categorical: np.ndarray, brain_mask: np.ndarray, shape: tuple
 ) -> np.ndarray:
+    """
+    Reshapes the data from an array shape to the brain volume using the mask image.
+    """
     brain_mask = brain_mask.flatten()
     predict_volume = brain_mask.copy()
     predict_volume[brain_mask == 255] = preds_categorical + 1

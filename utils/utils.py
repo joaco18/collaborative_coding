@@ -5,6 +5,7 @@ import pandas as pd
 
 
 def extract_metadata(img: sitk.Image) -> dict:
+    """Get the metadata from the "header" of the image"""
     header = {
         'direction': img.GetDirection(),
         'origin': img.GetOrigin(),
