@@ -18,7 +18,7 @@
 ---
 ## 1. Set up the repository
 
-&emsp; Got the repository page of [collaborative_coding](https://github.com/joaco18/collaborative_coding). Clone the repository to a known location in your laptop:
+&emsp; Go to the repository page of [collaborative_coding](https://github.com/joaco18/collaborative_coding). Clone the repository to a known location in your laptop:
 
 > Any OS:
 ```git
@@ -96,12 +96,12 @@ git checkout -b groupN
 
 &emsp; Once the code has been modified (in a real case you may have added a new functionality or solved a bug), you need to first check that the general pipeline is working and that is safe to merge your changes to dev.
 
-&emsp; In our case we will do this by running a test experiment. By doing so we will do two things at the same time:
+&emsp; In our case we will do this by running a test experiment. By doing so, we will do two things at the same time:
 
 - Be sure that our code is running
 - Test one method of having brain segmentations.
 
-&emsp; To do so you will need to check the file [experiments/test_config.yaml.example](../experiments/test_config.yaml.example):
+&emsp; To do so, you will need to check the file [experiments/test_config.yaml.example](../experiments/test_config.yaml.example):
 
 - Copy the indicated file and remove the _.example_ extension from the name.
     > Unix

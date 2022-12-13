@@ -8,6 +8,12 @@ import pandas as pd
 
 
 def plot_dice(df: pd.DataFrame):
+    """Plot a comparative dice scores box plot, sorting them by tissue 
+    type and expetiment name
+    Args:
+        df (pd.DataFrame: Dataframe of dice results. it shouldinclude columns:
+        ['dice', 'tissue', 'experiment_name']
+    """
     plt.figure(figsize=(10, 4))
     plt.title('Dice score across patients grouped by tissue and experient', fontsize=14)
     sns.boxplot(data=df, x="tissue", y="dice", hue="experiment_name")
@@ -25,15 +31,16 @@ def brains_figure(
     cases: List[str], data_path: Path, segs_path: Path, exp_names: List[str],
     out_path: Path = None, slice_n: int = 125
 ):
-    # TODO: Fix this docstring
     """
     Plot all segementations in plots of 7xn_cases. First row is t1 and second
-    ground truth
+    ground truth, the rest of them are different experiments. It is recommended
+    to provide 5 cases.
     Args:
         img_path (Path): t1 path
+        data_path (Path): directory containing the images and the groud truth sorted by case.
         segs_path (Path): directory containing all segementations
         cases (List[str]): list of case names to use in the plot
-        exp_names (List[str]): list of exp_names to include
+        exp_names (List[str]): list of experiments to include in the figure
         slice_n (int, optional): Axial slice to plot. Defaults to 25.
     """
     n_figures = int(np.ceil(len(exp_names) / 5))
