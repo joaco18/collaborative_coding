@@ -11,10 +11,10 @@ model:
   # whether to print intermediate messages in EM
   verbose: false
   # if you want to use the atlas inside EM:
-  # options: 'into', 'after', 'null'
+  # options: 'into', 'after', null
   # null means not to use of atlas inside EM
   use_atlas_in_em: 'after'
-  # select the atlas to use: 'mni', 'mv'
+  # select the atlas to use: 'mni', 'mv', null
   which_atlas_in_em: 'mni'
   # you can see how the iterative cluster goes at certain iterations rate
   # null means no plots are draw

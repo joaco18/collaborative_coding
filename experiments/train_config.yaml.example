@@ -11,13 +11,13 @@ model:
   # whether to print intermediate messages in EM
   verbose: false
   # if you want to use the atlas inside EM:
-  # options: 'into', 'after', 'null'
+  # options: 'into', 'after', null
   # null means not to use of atlas inside EM
   use_atlas_in_em: 'after'
-  # select the atlas to use: 'mni', 'mv'
+  # select the atlas to use: 'mni', 'mv', null
   which_atlas_in_em: 'mni'
   # you can see how the iterative cluster goes at certain iterations rate
-  # null means no plots are draw
+  # null means no plots are draw (int or null)
   plot_rate: null  
 
 
@@ -31,7 +31,7 @@ data:
   modalities: ['T1']
   pathologies: ['normal']
   # select a subset of the cases manually or run them all
-  case_selection: ['1013'] # 'all'
+  case_selection: ['1036'] # 'all'
   # how to normalize the images, only min-max methods is supported but you can change the details
   normalization_cfg:
     type: 'min_max'
@@ -45,7 +45,6 @@ data:
     interpolation: 'bicubic'
   # whether to skull strip the image, this is currently mocked inside the code, so this config doesn't have impact
   skull_stripping: true
-
 
 
 # All the results saving configs are gathered here:

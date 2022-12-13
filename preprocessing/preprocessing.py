@@ -25,8 +25,9 @@ def min_max_norm(
     percentiles: tuple = None, dtype: str = None
 ) -> np.ndarray:
     """
-    Scales images to be in range [0, 2**bits]
-
+    Scales image intensities into the range [0, max_val] or [0, 2**bits]. The
+    min and max values can be obtained from within a mask and using certain
+    percentiles of the intensities distribution.
     Args:
         img (np.ndarray): Image to be scaled.
         max_val (int, optional): Value to scale images
@@ -36,7 +37,6 @@ def min_max_norm(
         percentiles (tuple, optional): Tuple of percentiles to obtain min and max
             values respectively. Defaults to None which means min and max are used.
         dtype (str, optional): Output datatype
-
     Returns:
         np.ndarray: Scaled image with values from [0, max_val]
     """
@@ -136,6 +136,9 @@ class Preprocessor():
         return img
 
     def register(self, img: np.ndarray, reg_path: Path = None) -> Tuple[np.ndarray]:
+        """This is a dummy function, the registration is not done.
+        Just the registered images are loaded.
+        """
         if reg_path is None:
             r_mni_atlas = self.register_to_img(self.mni_atlas, img)
             r_mv_atlas = self.register_to_img(self.r_mv_atlas, img)
@@ -152,13 +155,25 @@ class Preprocessor():
         # )
         return atlas
 
-    def get_tissue_models_labels(self, img: np.ndarray, brain_mask: np.ndarray):
+    def get_tissue_models_labels(self, img: np.ndarray, brain_mask: np.ndarray) -> np.ndarray:
+        """
+        Gets a segmentation from the tissue models labels.
+        Args:
+            img (np.ndarray): T1 volumne.
+            brain_mask (np.ndarray): Mask of the brain tissues (result of skull stripping)
+        Returns:
+            _type_: _description_
+        """
+        # Consider only the region inside the brain mask
         t1_vector = img[brain_mask == 255].flatten()
+        # Set the probability values based on the tissue models (posterior probabilities)
         n_classes = self.tissue_models.shape[0]
         prob_map = np.zeros((n_classes, len(t1_vector)))
         for c in range(n_classes):
             prob_map[c, :] = self.tissue_models[c, t1_vector]
+        # MAP label assignment
         prob_map = np.argmax(prob_map, axis=0)
+        # Reconstruct a single 3d volume with the segmentation results.
         tm_labels_vol = brain_mask.flatten()
         tm_labels_vol[tm_labels_vol == 255] = prob_map + 1
         tm_labels_vol = tm_labels_vol.reshape(img.shape)

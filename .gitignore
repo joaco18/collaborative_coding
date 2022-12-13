@@ -1,4 +1,7 @@
-data/*
+data/e*
+data/c*
+data/m*
+data/t*
 experiments/results/*
 models/checkoints/*
 experiments/train_config.yaml
@@ -6,8 +9,9 @@ experiments/test_config.yaml
 experiments/test_results/
 experiments/train_results/
 dataset/generate_*
-models/checkpoints
+models/checkpoints/c*
 .vscode/
+.idea*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -138,3 +142,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+data/c*

@@ -5,6 +5,7 @@ import pandas as pd
 
 
 def extract_metadata(img: sitk.Image) -> dict:
+    """Get the metadata from the "header" of the image"""
     header = {
         'direction': img.GetDirection(),
         'origin': img.GetOrigin(),
@@ -14,6 +15,34 @@ def extract_metadata(img: sitk.Image) -> dict:
     for key in img.GetMetaDataKeys():
         header['metadata'][key] = img.GetMetaData(key)
     return header
+
+
+def save_img_from_array_using_referece(
+    volume: np.ndarray, reference: sitk.Image, filepath: Path
+) -> None:
+    """Stores the volume in nifty format using the spatial parameters coming
+        from a reference image
+    Args:
+        volume (np.ndarray): Volume to store as in Nifty format
+        reference (sitk.Image): Reference image to get the spatial parameters from.
+        filepath (Path): Where to save the volume.
+    """
+    # Save image
+    if (type(volume) == list) or (len(volume.shape) > 3):
+        if type(volume[0]) == sitk.Image:
+            vol_list = [vol for vol in volume]
+        else:
+            vol_list = [sitk.GetImageFromArray(vol) for vol in volume]
+        joiner = sitk.JoinSeriesImageFilter()
+        img = joiner.Execute(*vol_list)
+    else:
+        img = sitk.GetImageFromArray(volume)
+    img.SetDirection(reference.GetDirection())
+    img.SetOrigin(reference.GetOrigin())
+    img.SetSpacing(reference.GetSpacing())
+    for key in reference.GetMetaDataKeys():
+        img.SetMetaData(key, reference.GetMetaData(key))
+    sitk.WriteImage(img, str(filepath))
 
 
 def save_segmentations(
