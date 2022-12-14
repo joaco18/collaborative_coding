@@ -43,10 +43,10 @@ def brains_figure(
         exp_names (List[str]): list of experiments to include in the figure
         slice_n (int, optional): Axial slice to plot. Defaults to 25.
     """
-    n_figures = int(np.ceil(len(exp_names) / 5))
+    n_figures = int(np.ceil(len(exp_names) / 3))
     for n in range(n_figures):
-        sublist_exp = exp_names[n*5:(n+1)*5]
-        sublist_seg_p = segs_path[n*5:(n+1)*5]
+        sublist_exp = exp_names[n*3:(n+1)*3]
+        sublist_seg_p = segs_path[n*3:(n+1)*3]
         n_rows, n_cols = 2+len(sublist_exp), len(cases)
         _, ax = plt.subplots(n_rows, n_cols, figsize=(13, 3*(len(sublist_exp)+2)))
         for i, name in enumerate(['T1', 'GT']):

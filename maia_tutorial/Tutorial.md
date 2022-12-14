@@ -61,6 +61,8 @@ git checkout -b groupN
     
     - Using the atributes of the class ExpectationMaximization. You need to set the number of clusters to the number of components we use in EM and you need to fix the random state of KMeans to the defined seed for EM.
 
+    - <p style="color:#9e9898"> SOLUTION: kmeans = KMeans(n_clusters=self.n_components, random_state=self.seed).fit(self.x) <p>
+
 - ### Group 2:
     - There is some missing content in the use of an atlas inside EM algorithm in the INTO mode during the expectation phase.
 
@@ -68,12 +70,16 @@ git checkout -b groupN
     
     - Using the atributes of the class ExpectationMaximization. You need to make the poseterior probabilities (weights in MISA lexicon) be equal to the posteriors multiplied by the atlas map probability weights. For the atlas weights, check the atributes of ExpectationMaximization.
 
+    - <p style="color:#9e9898"> SOLUTION: self.posteriors = self.posteriors * self.atlas_map <p>
+
 - ### Group 3:
     - There is some missing content in the use of an atlas inside EM algorithm in the AFTER mode during the expectation phase.
 
     - Check the file [models/em.py](../models/em.py). In lines around 270 you will have to complete the expectation method of the class ExpectationMaximization.
     
     - Using the atributes of the class ExpectationMaximization. You need to make the poseterior probabilities (weights in MISA lexicon) be equal to the posteriors multiplied by the atlas map probability weights. For the atlas weights, check the atributes of ExpectationMaximization.
+
+    - <p style="color:#9e9898"> SOLUTION: self.posteriors = self.posteriors * self.atlas_map <p>
 
 - ### Group 4:
     - There is some missing content in the use of an atlas as initialization for EM algorithm.
@@ -84,12 +90,17 @@ git checkout -b groupN
     
     - For the atlas map weights, check the atributes of ExpectationMaximization use the proper atribute.
 
+    - <p style="color:#9e9898"> SOLUTION: self.posteriors = self.posteriors * self.atlas_map <p>
+
 - ### Group 5:
     - There is some missing content in the analysis function (which is going to mock our company's performances dashbord) that summarizes the results of the run experiments.
 
     - Check the file [analysis/analysis.py](../analysis/analysis.py). In lines around 55 and 59.
     
     - You need to call two plotting functions which are already defined in [utils/plots.py](../utils/plots.py). Have in mind that the plots module from utils has already been imported and that the funtion arguments are also provided.
+
+    - <p style="color:#9e9898"> SOLUTION: plots.plot_dice(df) <p>
+    - <p style="color:#9e9898"> SOLUTION: plots.brains_figure(cases, data_path, segs_path, exp_names, savepath) <p>
 
 
 ## 4. Make sure your changes work by running an experiment
@@ -130,23 +141,23 @@ git checkout -b groupN
 - Modify the file [experiments/test_config.yaml](../experiments/test_config.yaml.example) according to the experiment assigned to your group:
     -  Group 1:
         
-        Run an experiment using Kmeans as initialization for EM. Don't use the atlas in any way. Use the cases: ['1025', '1024', '1104', '1110', '1003']. Modify the experiment name to exp_group1. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
+        Run an experiment using Kmeans as initialization for EM. Don't use the atlas in any way. Use the cases: ['1025', '1024', '1003']. Modify the experiment name to exp_group1. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
     
     -  Group 2:
         
-        Run an experiment using tissue models as initialization for EM. Use the Medvision atlas in INTO mode. Use the cases: ['1025', '1024', '1104', '1110', '1003']. Modify the experiment name to exp_group2. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
+        Run an experiment using tissue models as initialization for EM. Use the Medvision atlas in INTO mode. Use the cases: ['1025', '1024', '1003']. Modify the experiment name to exp_group2. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
 
     -  Group 3:
         
-        Run an experiment using tissue models as initialization for EM. Use the Medvision atlas in AFTER mode. Use the cases: ['1025', '1024', '1104', '1110', '1003']. Modify the experiment name to exp_group3. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
+        Run an experiment using tissue models as initialization for EM. Use the Medvision atlas in AFTER mode. Use the cases: ['1025', '1024', '1003']. Modify the experiment name to exp_group3. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
 
     -  Group 4:
         
-        Run an experiment using medvision atlas as initialization for EM. Don't use the atlas inside EM. Use the cases: ['1025', '1024', '1104', '1110', '1003']. Modify the experiment name to exp_group4. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
+        Run an experiment using medvision atlas as initialization for EM. Don't use the atlas inside EM. Use the cases: ['1025', '1024', '1003']. Modify the experiment name to exp_group4. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
     
     -  Group 5:
         
-        Run an experiment using random initialization for EM. Don't use the atlas inside EM. Use the cases: ['1025', '1024', '1104', '1110', '1003']. Modify the experiment name to exp_group5. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
+        Run an experiment using random initialization for EM. Don't use the atlas inside EM. Use the cases: ['1025', '1024', '1003']. Modify the experiment name to exp_group5. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
     
 - Run the experiment:
     > Any OS
@@ -155,11 +166,22 @@ git checkout -b groupN
     ```
 - Go to the results directory _experiments/test_results/exp_groupN_. Copy the ckeckpoint file of the model you trained inside [models/checkpoints/](../models/checkpoints/) directory under the name _checkpoint_groupN.pkl_
 
-- Update the [README.md](../README.md) in Section 2. Benchmarks. To include your results. Example:
+    > Unix
+    ```bash
+    cp experiments/test_results/exp_groupN/checkpoint.pkl models/checkpoints/checkpoint_groupN.pkl
+    ```
+    > Windows
+    ```bash
+    copy experiments\test_results\exp_groupN\checkpoint.pkl models\checkpoints\checkpoint_groupN.pkl
+    ```
+    > Alternative
+
+    &emsp; Copy the file manually
+
+- Update the [README.md](../README.md) in Section 2. Benchmarks. Replace the example checkpoint results by yours. Example:
 
     Checkploint file | Model  | CSF | WM | GM 
     ---------------- | -----  | --- | -- |--- 
-    checkpoint_def.pkl | EM - init:TM - atlas:mni/after | 0.463 | 0.805  | 0.895
     checkpoint_groupN.pkl | EM - init:KM - atlas:mv/into | 0.3 | 0.7  | 0.6
 
 ## 5. Commit your changes and make a pull request to dev.
