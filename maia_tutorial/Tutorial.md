@@ -146,7 +146,7 @@ git checkout -b groupN
     
     -  Group 2:
         
-        Run an experiment using random initialization for EM. Don't use the atlas in any way. Use the cases: ['1025', '1024', '1003']. Modify the experiment name to exp_group2. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
+        Run an experiment using tissue models as initialization for EM. Don't use the atlas in any way. Use the cases: ['1025', '1024', '1003']. Modify the experiment name to exp_group2. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
 
     -  Group 3:
         
