@@ -66,16 +66,17 @@ git checkout -b groupN
 - ### Group 2:
     - There is some missing content in the use of an atlas inside EM algorithm in the INTO mode during the expectation phase.
 
-    - Check the file [models/em.py](../models/em.py). In lines around 268 you will have to complete the expectation method of the class ExpectationMaximization.
+    - Check the file [models/em.py](../models/em.py). In lines around 270 you will have to complete the expectation method of the class ExpectationMaximization.
     
-    - Using the atributes of the class ExpectationMaximization. You need to make the poseterior probabilities (weights in MISA lexicon) be equal to the posteriors multiplied by the atlas map probability weights. For the atlas weights, check the atributes of ExpectationMaximization.
+    - Using the atributes of the class ExpectationMaximization. You need to make the poseterior probabilities (weights in MISA lexicon) be equal to the posteriors multiplied by the atlas map probability weights. This operation will be repeated in each iteration of the EM algorithm. For the atlas weights, check the atributes of ExpectationMaximization.
 
     - <p style="color:#9e9898"> SOLUTION: self.posteriors = self.posteriors * self.atlas_map <p>
+    
 
 - ### Group 3:
     - There is some missing content in the use of an atlas inside EM algorithm in the AFTER mode during the expectation phase.
 
-    - Check the file [models/em.py](../models/em.py). In lines around 270 you will have to complete the expectation method of the class ExpectationMaximization.
+    - Check the file [models/em.py](../models/em.py). In lines around 277 you will have to complete the expectation method of the class ExpectationMaximization.
     
     - Using the atributes of the class ExpectationMaximization. You need to make the poseterior probabilities (weights in MISA lexicon) be equal to the posteriors multiplied by the atlas map probability weights. For the atlas weights, check the atributes of ExpectationMaximization.
 
@@ -145,7 +146,7 @@ git checkout -b groupN
     
     -  Group 2:
         
-        Run an experiment using tissue models as initialization for EM. Use the Medvision atlas in INTO mode. Use the cases: ['1025', '1024', '1003']. Modify the experiment name to exp_group2. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
+        Run an experiment using tissue models as initialization for EM. Don't use the atlas in any way. Use the cases: ['1025', '1024', '1003']. Modify the experiment name to exp_group2. Make sure datapath, tissue_models_filepath, results_path are with your own paths.
 
     -  Group 3:
         
