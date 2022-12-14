@@ -140,7 +140,8 @@ class ExpectationMaximization():
                 tissue_prob_maps = np.zeros((self.n_samples, self.n_components))
                 for c in range(self.n_components):
                     tissue_prob_maps[:, c] = self.tissue_models[c, :][self.x[:, 0]]
-                self.posteriors = tissue_prob_maps
+                # TODO: HERE GROUP 2, FIX THIS CODE
+                self.posteriors = (...)
                 self.posteriors[np.arange(self.n_samples), np.argmax(tissue_prob_maps, axis=1)] = 1
             elif self.mean_init == 'mni_atlas':
                 self.mean_type = 'Label Propagation MNI Atlas'
@@ -268,8 +269,7 @@ class ExpectationMaximization():
         if (self.atlas_use == 'into' and self.training):
             if (it == 0) and (self.mean_init == 'kmeans'):
                 self.match_labels()
-            # TODO: HERE GROUP 2, FIX THIS CODE:
-            self.posteriors = (...)
+            self.posteriors = self.posteriors * self.atlas_map
 
         if (self.atlas_use == 'after' and not(self.training)):
             if self.mean_init == 'kmeans':
