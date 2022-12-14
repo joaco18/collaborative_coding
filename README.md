@@ -34,6 +34,7 @@
 Checkploint file | Model  | CSF | WM | GM 
 ---------------- | -----  | --- | -- |--- 
 checkpoint_def.pkl | EM - init:TM - atlas:mni/after | 0.463 | 0.805  | 0.895
+checkpoint_group4.pkl | EM - init:MV - atlas:null | 0.226 | 0.807  | 0.922
 
 ## 3. Instructions for contributers
 
