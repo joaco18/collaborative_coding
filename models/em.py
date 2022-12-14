@@ -146,7 +146,7 @@ class ExpectationMaximization():
             elif self.mean_init == 'mni_atlas':
                 self.mean_type = 'Label Propagation MNI Atlas'
                 # TODO: HERE GROUP 4, FIX THIS CODE
-                (...)
+                self.posteriors = self.posteriors * self.atlas_map
             else:
                 self.mean_type = 'Label Propagation Medvision Atlas'
                 self.posteriors = self.atlas_map
