@@ -33,13 +33,11 @@
 ## 2. Benchmarks:
 Checkploint file | Model  | CSF | WM | GM 
 ---------------- | -----  | --- | -- |--- 
-<<<<<<< HEAD
 checkpoint_group1.pkl | EM - init:KM - atlas:null/null | 0.279 | 0.815  | 0.871
 checkpoint_group2.pkl | EM - init:TM - atlas:null/null | 0.254 | 0.83  | 0.638
 checkpoint_group3.pkl | EM - init:TM - atlas:mv/after | 0.653 | 0.852  | 0.924
-=======
 checkpoint_group4.pkl | EM - init:mv_atlas - atlas:null/null | 0.226 | 0.807  | 0.922
->>>>>>> group4_j
+checkpoint_group5.pkl | EM - init:RN - atlas:null/null | 0.02 | 0.402  | 0.057
 
 ## 3. Instructions for contributers
 
