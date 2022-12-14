@@ -54,12 +54,12 @@ def main():
         ]
         # plot dice figure
         # TODO HERE GROUP 5, FIX THIS CODE
-        [FUNCTION_1](df)
+        plots.plot_dice(df)
         plt.savefig(savepath/'dices.svg', bbox_inches='tight', format='svg')
 
         # plot brain segementations figure
         # TODO HERE GROUP 5, FIX THIS CODE
-        [FUNCTION_2](cases, data_path, segs_path, exp_names, savepath)
+        plots.brains_figure(cases, data_path, segs_path, exp_names, savepath)
         plt.show()
 
 
