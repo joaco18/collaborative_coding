@@ -133,7 +133,7 @@ class ExpectationMaximization():
             elif self.mean_init == 'kmeans':
                 self.mean_type = 'K-Means'
                 # TODO: HERE GROUP 1, FIX THIS CODE
-                kmeans = KMeans(...).fit(self.x)
+                kmeans = KMeans(n_clusters=self.n_components, random_state=self.seed).fit(self.x)
                 self.posteriors[np.arange(self.n_samples), kmeans.labels_] = 1
             elif self.mean_init == 'tissue_models':
                 self.mean_type = 'Tissue Models'
