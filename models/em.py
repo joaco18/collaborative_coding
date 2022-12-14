@@ -269,7 +269,7 @@ class ExpectationMaximization():
             if (it == 0) and (self.mean_init == 'kmeans'):
                 self.match_labels()
             # TODO: HERE GROUP 2, FIX THIS CODE
-            self.posteriors = (...)
+            self.posteriors = self.posteriors * self.atlas_map 
 
         if (self.atlas_use == 'after' and not(self.training)):
             if self.mean_init == 'kmeans':
