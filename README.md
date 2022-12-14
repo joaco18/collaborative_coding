@@ -11,7 +11,7 @@
 
 &emsp; Brain Segmenter is a pipeline to segment Brain MRI scans in four different different regions: 
 -  White Matter (WM)
--  Gray Matter (WM)
+-  Gray Matter (GM)
 -  Cerebro-Spinal Fluid (CSF)
 -  Background + Bone + Extra-Skull-Soft-Tissue
 
@@ -132,7 +132,7 @@ checkpoint_def.pkl | EM - init:TM - atlas:mni/after | 0.463 | 0.805  | 0.895
     python brain_segmenter.py --ip /home/jseia/Desktop/MAIA/classes/spain/ehealth/lab/collaborative_coding/data/example_image/1003/1003.nii.gz --chkpt /home/jseia/Desktop/MAIA/classes/spain/ehealth/lab/collaborative_coding/models/checkpoints/checkpoint_def.pkl --op /home/jseia/Desktop/MAIA/classes/spain/ehealth/lab/collaborative_coding/data/example_image/1003
     ```
 
-### 4.3 Run pipeline as developer
+### 3.3 Run pipeline as developer
 - 3.3.1 **Download the database**
 
     > Unix:
@@ -181,7 +181,7 @@ checkpoint_def.pkl | EM - init:TM - atlas:mni/after | 0.463 | 0.805  | 0.895
         &emsp; Example:
 
         ```bash
-        python analysis/analysis.py --rf /home/jseia/Desktop/MAIA/classes/spain/ehealth/lab/collaborative_coding/experiments/test_results --op /home/jseia/Desktop/MAIA/classes/spain/ehealth/lab/collaborative_coding/data/comp_imgs --exp try_01 try_02 --cases 1025 1024 1104 1110 1003
+        python analysis/analysis.py --rf /home/jseia/Desktop/MAIA/classes/spain/ehealth/lab/collaborative_coding/experiments/test_results --op /home/jseia/Desktop/MAIA/classes/spain/ehealth/lab/collaborative_coding/data/comp_imgs --exp try_01 try_02 --cases 1025 1024 1003
         ```
 
 ### 3.4 Recommendations to developers
