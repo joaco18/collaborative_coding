@@ -64,19 +64,19 @@ git checkout -b groupN
     - <p style="color:#9e9898"> SOLUTION: kmeans = KMeans(n_clusters=self.n_components, random_state=self.seed).fit(self.x) <p>
 
 - ### Group 2:
-    - There is some missing content in random initialization method for EM algorithm.
+    - There is some missing content in the use of an atlas inside EM algorithm in the INTO mode during the expectation phase.
 
-    - Check the file [models/em.py](../models/em.py). In lines around 131 you will have to complete the random index generator.
+    - Check the file [models/em.py](../models/em.py). In lines around 270 you will have to complete the expectation method of the class ExpectationMaximization.
     
-    - Using the atributes self.n_samples, self.n_components of the class ExpectationMaximization to fill the arguments of the random number generator choice [function](https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.choice.html), also ser replace argument to False. First argument should be the array to sample the numbers from, second the number of samples to get.
+    - Using the atributes of the class ExpectationMaximization. You need to make the poseterior probabilities (weights in MISA lexicon) be equal to the posteriors multiplied by the atlas map probability weights. This operation will be repeated in each iteration of the EM algorithm. For the atlas weights, check the atributes of ExpectationMaximization.
 
-    - <p style="color:#9e9898"> SOLUTION: idx = rng.choice(self.n_samples, size=self.n_components, replace=False) <p>
+    - <p style="color:#9e9898"> SOLUTION: self.posteriors = self.posteriors * self.atlas_map <p>
     
 
 - ### Group 3:
     - There is some missing content in the use of an atlas inside EM algorithm in the AFTER mode during the expectation phase.
 
-    - Check the file [models/em.py](../models/em.py). In lines around 270 you will have to complete the expectation method of the class ExpectationMaximization.
+    - Check the file [models/em.py](../models/em.py). In lines around 277 you will have to complete the expectation method of the class ExpectationMaximization.
     
     - Using the atributes of the class ExpectationMaximization. You need to make the poseterior probabilities (weights in MISA lexicon) be equal to the posteriors multiplied by the atlas map probability weights. For the atlas weights, check the atributes of ExpectationMaximization.
 

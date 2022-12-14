@@ -127,8 +127,7 @@ class ExpectationMaximization():
             if self.mean_init == 'random':
                 self.mean_type = 'Random Init'
                 rng = np.random.default_rng(seed=self.seed)
-                # TODO: HERE GROUP 2, FIX THIS CODE
-                idx = rng.choice(...)
+                idx = rng.choice(self.n_samples, size=self.n_components, replace=False)
                 self.posteriors[idx, np.arange(self.n_components)] = 1
                 self.priors = np.ones((self.n_components, 1)) / self.n_components
             elif self.mean_init == 'kmeans':
@@ -269,7 +268,8 @@ class ExpectationMaximization():
         if (self.atlas_use == 'into' and self.training):
             if (it == 0) and (self.mean_init == 'kmeans'):
                 self.match_labels()
-            self.posteriors = self.posteriors * self.atlas_map
+            # TODO: HERE GROUP 2, FIX THIS CODE
+            self.posteriors = (...)
 
         if (self.atlas_use == 'after' and not(self.training)):
             if self.mean_init == 'kmeans':
