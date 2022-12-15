@@ -12,6 +12,7 @@ dataset/generate_*
 models/checkpoints/c*
 .vscode/
 .idea*
+02*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
